@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Builder Card</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      (function () {
+        let theme = null;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!theme) {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="top">
+      <button id="theme-toggle" class="theme-toggle" type="button">
+        Dark mode
+      </button>
+    </header>
+
+    <main class="page">
+      <h1>GitHub Builder Card</h1>
+      <p class="intro-section">
+        Enter a gitHub username to see their top repos, main languages and
+        recent activity.
+      </p>
+
+      <form id="search-form" class="search">
+        <label for="username" class="visually-hidden"></label>
+        <input id="username" type="text" placeholder="eg : torvalds" />
+        <button type="submit">Builder Card</button>
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+
+      <article id="card" class="card" hidden>
+        <section id="profile" class="profile"></section>
+
+        <section>
+          <h2>Top Repos</h2>
+          <div id="repos" class="repsos"></div>
+        </section>
+
+        <section>
+          <h2>Main Languages</h2>
+          <div id="languages"></div>
+        </section>
+
+        <section>
+          <h2>Recent Activity</h2>
+          <ul id="activity" class="activity"></ul>
+        </section>
+      </article>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
