@@ -2,8 +2,7 @@
 
 Enter a GitHub username and get a one-page profile card: the person's top repos, main languages and recent activity.
 
-**Live demo:** _add your Netlify/Vercel link here after deploying_
-
+**Live demo:** https://builder-card-one.vercel.app
 ## How it works
 
 Plain HTML, CSS and vanilla JavaScript. There is no backend and no build step: the browser calls the public GitHub REST API directly.
